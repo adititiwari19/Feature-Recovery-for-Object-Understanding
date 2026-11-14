@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Feature Recovery for Object Understanding After Irreversible Fire Damage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #050708;
+      --card: #101418;
+      --accent: #d8d8d8;
+      --accent-soft: #c2c2c2;
+      --gold: #f2c96a;
+      --text-main: #f5f5f5;
+      --text-muted: #c4c8ce;
+      --border-subtle: rgba(200,200,200,0.12);
+      --shadow-soft: 0 18px 40px rgba(0,0,0,0.55);
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --transition-fast: 0.22s ease;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #15191f 0, #050708 55%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 32px 18px 72px;
+    }
+
+    /* NAVBAR */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(120deg, rgba(10,12,14,0.92), rgba(5,7,8,0.96));
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      padding: 10px 18px;
+    }
+
+    .nav-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+    }
+
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffffff, #bdbdbd);
+      box-shadow: 0 0 12px rgba(240,240,240,0.9);
+    }
+
+    .nav-title {
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      padding-bottom: 3px;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+
+    .hero {
+      margin-top: 36px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(242,201,106,0.32);
+      background: radial-gradient(circle at left, rgba(242,201,106,0.2), transparent 55%);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 3.4vw, 2.8rem);
+      line-height: 1.12;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 40rem;
+      margin: 0 auto 14px;
+    }
+
+    .hero-authors {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-authors a {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+    }
+
+    .hero-meta-row {
+      font-size: 0.78rem;
+      color: var(--accent-soft);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .btn {
+      border-radius: var(--radius-pill);
+      padding: 9px 18px;
+      font-size: 0.84rem;
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(135deg, #f3f3f3, #bababa);
+      color: #050505;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.65);
+    }
+
+    .btn span.icon { font-size: 0.9rem; }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      background: linear-gradient(135deg,#ffffff, #cdcdcd);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.75);
+    }
+
+    .btn-secondary {
+      background: rgba(10,12,15,0.9);
+      color: var(--accent-soft);
+      box-shadow: none;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(20,23,27,0.95);
+      color: var(--accent);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.45);
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      font-size: 0.82rem;
+      color: var(--accent-soft);
+    }
+
+    .metric-pill {
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      background: rgba(8,10,12,0.8);
+    }
+
+    /* SECTIONS */
+
+    section { margin-top: 56px; }
+
+    .section-block {
+      /* lighter 3-tone silver/grey gradient */
+      background: radial-gradient(circle at top, #434b57 0, #2a3039 45%, #181c23 80%);
+      border-radius: 22px;
+      padding: 22px 18px 24px;
+      border: 1px solid rgba(255,255,255,0.055);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.55);
+    }
+
+    .section-header {
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* we keep the class in case you want it later, but no text uses it now */
+    .section-tagline {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      max-width: none;
+    }
+
+    .section-body {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      max-width: none;
+    }
+
+    .card {
+      background: radial-gradient(circle at top, #202530 0, #0b0e14 60%);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow-soft);
+      margin-top: 18px;
+    }
+
+    .card-title {
+      font-size: 0.96rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .card-subtitle {
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 4px;
+    }
+
+    /* FIGURES */
+
+    .figure {
+      margin-top: 16px;
+      margin-bottom: 10px;
+    }
+
+    .figure img {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.04);
+      display: block;
+      background: #0b0e10;
+    }
+
+    .figure-caption {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      max-width: none;
+    }
+
+    /* TABLES */
+
+    .table-wrapper {
+      margin-top: 16px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top, #171b20, #050708);
+      box-shadow: var(--shadow-soft);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.83rem;
+    }
+
+    th, td {
+      padding: 9px 12px;
+      white-space: nowrap;
+    }
+
+    th {
+      text-align: left;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(4,5,7,0.96);
+    }
+
+    tbody tr {
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    tbody tr:nth-child(odd) {
+      background: rgba(255,255,255,0.01);
+    }
+
+    tbody tr:hover {
+      background: linear-gradient(90deg, rgba(242,201,106,0.18), rgba(255,255,255,0.02));
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .row-highlight {
+      background: linear-gradient(90deg, rgba(242,201,106,0.16), rgba(0,0,0,0));
+    }
+
+    .row-group {
+      background: rgba(0,0,0,0.75);
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0.08em;
+    }
+
+    .cell-human { font-weight: 500; color: #ffffff; }
+    .cell-metric { color: var(--accent-soft); }
+
+    /* TASK CARDS */
+
+    .task-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 800px) {
+      .task-grid { grid-template-columns: 1fr; }
+    }
+
+    .task-card {
+      background: linear-gradient(145deg, #15181d, #080a0c);
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      padding: 14px 14px 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .task-title {
+      font-size: 0.94rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .task-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .task-text {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 9px;
+      font-size: 0.74rem;
+      color: var(--accent-soft);
+      margin-top: 6px;
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    /* CODE BLOCK */
+
+    pre {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.8rem;
+      background: #050607;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      padding: 12px 14px;
+      overflow-x: auto;
+      color: #d4d4d4;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      margin-top: 52px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    /* REVEAL ANIMATION */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <div class="nav-dot"></div>
+        <div class="nav-title">Feature Recovery for Post-fire Object Detection </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#dataset">Dataset</a>
+        <a href="#tasks">Tasks</a>
+        <a href="#tor">FRM</a>
+        <a href="#results">Results</a>
+        <a href="#resources">Resources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- HERO -->
+    <section class="hero reveal">
+      <div class="hero-badge">
+        <span>NeurIPS 2026 Poster · Benchmark & Method</span>
+      </div>
+      <div class="hero-fire">
+        <h1 class="hero-title">
+          Feature Recovery for Object Understanding After Irreversible Fire Damage
+        </h1>
+      </div>
+      <p class="hero-subtitle">
+        Introduces the first transformation-aware dataset for post-fire object understanding, 
+        along with a lightweight plug-and-play module that maps degraded encoder features 
+        to pristine-aligned representations while keeping the host model frozen. 
+        Averaged across severity levels, the module improves retrieval by 12.5%, 
+        material recovery by 20.1%, description generation by 13.2%, and functional reasoning by 12.4%.
+      </p>
+      <p class="hero-authors">
+        <a href="https://adititiwari19.github.io/" target="_blank" rel="noreferrer">Aditi Tiwari</a>,
+        <a href="https://sstoica12.github.io/" target="_blank" rel="noreferrer">Sofia Stoica</a>,
+        <a href="https://savya08.github.io/" target="_blank" rel="noreferrer">Savya Khosla</a>,
+        <a href="http://luthuli.cs.uiuc.edu/~daf/" target="_blank" rel="noreferrer">David Forsyth</a>,
+        <a href="https://siebelschool.illinois.edu/about/people/faculty/hengji" target="_blank" rel="noreferrer">Heng Ji</a>,
+        University of Illinois Urbana–Champaign
+      </p>
+      <div class="hero-meta-row">
+       21.4K images · 499 objects · 189 categories · 5 tasks · 10%+ gains over detector and VLM baselines
+      </div>
+
+      <div class="hero-buttons">
+        <a class="btn" href="https://arxiv.org/abs/2609.12078" target="_blank" rel="noreferrer">
+          <span class="icon">⬇</span><span>Paper (arXiv)</span>
+        </a>
+        <a class="btn btn-secondary" href="https://uofi.app.box.com/v/fire360dataset" target="_blank" rel="noreferrer">
+          <span class="icon">🎞</span><span>Dataset Download</span>
+        </a>
+        <!-- <a class="btn btn-secondary" href="images/poster.pdf" target="_blank" rel="noreferrer">
+          <span class="icon">🖼</span><span>Poster (PDF)</span>
+        </a> -->
+        <a class="btn btn-secondary" href="https://neurips.cc/virtual/2026/loc/sydney/poster/151094" target="_blank" rel="noreferrer">
+          <span class="icon">⭐</span><span>NeurIPS Page</span>
+        </a>
+      </div>
+<!-- 
+      <div class="hero-metrics">
+        <div class="metric-pill">360° real-world firefighter drills</div>
+        <div class="metric-pill">Dataset + benchmark suite</div>
+        <div class="metric-pill">Safety-critical perception & memory</div>
+      </div> -->
+    </section>
+<!-- OVERVIEW -->
+<section id="overview" class="reveal section-block">
+  <div class="section-header">
+    <h2 class="section-title">Overview</h2>
+  </div>
+  <div class="section-body">
+    <p>
+      Objects in post-fire environments often undergo irreversible physical transformations that change their geometry, 
+      material state, and visual appearance. Detecting and identifying these remnants is critical for locating 
+      hazards, reconstructing pre-incident contents, and inventorying losses. Unlike standard image corruptions, 
+      these degradations affect the physical structure of the object itself. 
+      </p>
+      <br/>
+      To study this setting, we introduce TRACE, a transformation-aware benchmark for post-fire object understanding. 
+      TRACE contains 21.4K real-image-grounded synthetic scenes and paired object-level pristine-to-degraded progressions 
+      spanning 499 object identities across 189 categories. We define five tasks targeting localization and pre-degradation 
+      understanding: degraded-object detection, pristine-state recovery and retrieval, original material recovery, 
+      pristine description generation, and functional reasoning. 
+      </p>
+      <br/>  
+      Existing models degrade sharply with severity. 
+      From the least to the most severe level, RF-DETR mAP decreases by 71% relative, while InternVL3.5 retrieval R@1 falls 
+      from 93.85 to 28.11. To address this, we propose Feature Recovery Module (FRM), 
+      a lightweight plug-and-play module that maps degraded encoder features to pristine-aligned 
+      representations while keeping the host frozen. Trained only with paired feature supervision, 
+      FRM improves scene-level detection, CLIP/SigLIP2 feature recovery, and all four object-level VLM tasks, 
+      with larger gains under more severe degradation. On 100 held-out real post-fire scenes, 
+      FRM also improves detection by 16.1% relative. Across VLM hosts and severity levels, 
+      relative gains average 12.5% for retrieval, 20.1% for material recovery, 13.2% for description 
+      generation, and 12.4% for functional reasoning.
+    </p>
+  </div>
+</section>
+
+
+    <!-- DATASET -->
+    <section id="dataset" class="reveal section-block">
+      <div class="section-header">
+        <h2 class="section-title">Dataset</h2>
+      </div>
+
+      <div class="figure">
+        <img src="images/dataset.png"
+             alt="Example scenes of indoor outdoor and objects of varying materials in Trace across level degredation." />
+        <div class="figure-caption">
+          Figure 1: TRACE contains real-image-grounded synthetic post-fire scenes and
+paired pristine-to-degraded object trajectories. Scene annotations include bounding boxes, material labels, and
+captions; object trajectories include part-level materials and progressive degradation states for tracking identity
+changes under physical transformation..
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-subtitle">Positioning</div>
+        <div class="card-title">Comparison with existing robustness and disaster datasets</div>
+        <p class="section-body" style="margin-top: 6px;">
+          Existing benchmarks provide clean-corrupted image pairs, matched adverse-condition scenes,
+          or disaster damage annotations. TRACE instead tracks individual objects through progressive
+          physical degradation with a pristine reference.
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Dataset</th>
+                <th>Setting</th>
+                <th>Reference pairing</th>
+                <th>Physical object trajectory</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ImageNet-C</td>
+                <td>Image corruption</td>
+                <td>Clean image</td>
+                <td>✗</td>
+              </tr>
+              <tr>
+                <td>COCO-C</td>
+                <td>Detection corruption</td>
+                <td>Clean image</td>
+                <td>✗</td>
+              </tr>
+              <tr>
+                <td>ACDC</td>
+                <td>Adverse driving conditions</td>
+                <td>Matched normal scene</td>
+                <td>✗</td>
+              </tr>
+              <tr>
+                <td>xBD</td>
+                <td>Disaster building damage</td>
+                <td>Pre/post satellite</td>
+                <td>✗</td>
+              </tr>
+              <tr>
+                <td>RescueNet</td>
+                <td>Post-hurricane UAV damage</td>
+                <td>✗</td>
+                <td>✗</td>
+              </tr>
+              <tr>
+                <td>Incidents1M</td>
+                <td>Incident images</td>
+                <td>✗</td>
+                <td>✗</td>
+              </tr>
+              <tr class="row-highlight">
+                <td><strong>TRACE (Ours)</strong></td>
+                <td>Post-fire object damage</td>
+                <td><strong>Pristine object</strong></td>
+                <td><strong>L0–L4</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-subtitle">Content Distribution</div>
+        <div class="card-title">Subset Distributions</div>
+        <div class="figure">
+          <img src="images/subset_breakdon.png"
+               alt="Barplot for the subset distributions." />
+          <div class="figure-caption">
+            Figure 3: Material and Object category distribution. As can be seen, TRACE includes a diverse set of materials, from stone to plastic, and objects ranging from personal valuables to dangerous objects.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TASKS -->
+   <section id="tasks" class="reveal section-block">
+      <div class="section-header">
+        <h2 class="section-title">Benchmark Tasks</h2>
+      </div>
+
+      <div class="task-grid">
+        <div class="task-card">
+          <div class="task-title">Degraded-object detection.</div>
+          <div class="task-meta">Goal: localize all objects of interest in scene-level post-fire images.</div>
+          <p class="task-text">
+            Output: bounding boxes + mapped COCO classes.
+          </p>
+          <div class="pill"><span class="pill-dot"></span>Metric: COCO-mapped mAP@0.5:0.95.</div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-title">Pristine-state recovery (feature).</div>
+          <div class="task-meta">Goal: recover CLIP/SigLIP2 features toward paired pristine targets.</div>
+          <p class="task-text">
+            Output: recovered visual embeddings.
+          </p>
+          <div class="pill"><span class="pill-dot"></span>Metric: MSE, cosine similarity.</div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-title">Pristine-state retrieval (gallery).</div>
+          <div class="task-meta">Goal: retrieve paired pristine reference from candidate gallery using VLM embeddings.</div>
+          <p class="task-text">
+            Output: ranked pristine gallery.
+          </p>
+          <div class="pill"><span class="pill-dot"></span>Metric: recall@1.</div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-title">Original material recovery.</div>
+          <div class="task-meta">Goal: predict pre-degradation materials from degraded object image.</div>
+          <p class="task-text">
+            Output: material label set.
+          </p>
+          <div class="pill"><span class="pill-dot"></span>Metric: Micro-F1 over normalized material classes.</div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-title">Pristine description generation.</div>
+          <div class="task-meta">Goal: describe object identity, material, and function before degradation.</div>
+          <p class="task-text">
+            Output: single-sentence description.
+          </p>
+          <div class="pill"><span class="pill-dot"></span>Metric: mean of identity accuracy, material micro-F1, and function accuracy.</div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-title">Functional reasoning.</div>
+          <div class="task-meta">Goal: predict pre-degradation function and required restoration materials.</div>
+          <p class="task-text">
+            Output: function tags + restoration materials.
+          </p>
+          <div class="pill"><span class="pill-dot"></span>Metric: mean of function-tag micro-F1 and restoration-material micro-F1.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOR SECTION -->
+    <section id="tor" class="reveal section-block">
+      <div class="section-header">
+        <h2 class="section-title">Feature Recovery Module</h2>
+      </div>
+
+      <div class="figure">
+        <img src="images/Frm.png"
+             alt="Implementation specification of FRM across model families." />
+        <div class="figure-caption">
+          Figure 6:(a) FRM is a residual Transformer over visual tokens, trained
+to recover pristine-aligned features from degraded ones with a zero-gated identity initialization; tap t is the
+frozen host feature interface where FRM is inserted. (b) In RF-DETR, DINOv2 feature maps from four
+tapped layers are flattened, corrected by a single shared FRM head, and reshaped before the unchanged detector.
+(c) In Qwen3-VL, FRM corrects post-merger visual tokens before they are consumed by the frozen language
+model. Dashed paths denote the no-FRM baseline.
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="reveal section-block">
+      <div class="section-header">
+        <h2 class="section-title">Results</h2>
+        <p class="section-tagline">
+          Bar plots summarize the performance improvement of FRM across all tasks and models.
+        </p>
+      </div>
+    
+      <!-- Simple styles for grid + dropdown + centered TOR -->
+      <style>
+        .results-toggle {
+          margin-bottom: 20px;
+        }
+    
+        .results-toggle summary {
+          cursor: pointer;
+          font-weight: 600;
+          list-style: none;
+        }
+    
+        .results-toggle summary::-webkit-details-marker {
+          display: none;
+        }
+    
+        .results-toggle summary::before {
+          content: "▸ ";
+          font-size: 0.9em;
+        }
+    
+        .results-toggle[open] summary::before {
+          content: "▾ ";
+        }
+    
+        .results-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 24px;
+          margin-top: 10px;
+        }
+    
+        .results-grid .figure {
+          margin: 0;
+        }
+    
+        .figure-tor {
+          max-width: 650px;
+          margin: 32px auto 0 auto;
+        }
+    
+        .figure-tor img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+    
+        .figure-caption {
+          margin-top: 8px;
+          font-size: 0.9rem;
+          opacity: 0.85;
+        }
+    
+        .table-wrapper {
+          overflow-x: auto;
+        }
+    
+        .row-group td {
+          font-weight: 600;
+          padding-top: 10px;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    
+        /* Soft golden highlight for best model rows (Option A) */
+        .row-highlight {
+          background: rgba(255, 215, 0, 0.18); /* soft golden overlay */
+        }
+    
+        .row-highlight td {
+          font-weight: 600;
+          color: #ffd46b; /* warm gold text */
+        }
+    
+        @media (max-width: 768px) {
+          .results-grid {
+            grid-template-columns: 1fr;
+          }
+          .figure-tor {
+            margin-top: 24px;
+          }
+        }
+        .figure-caption {
+      color: #c4c8ce !important;
+      opacity: 1 !important;
+    }
+
+    /* FIRE PHOTO BEHIND TITLE */
+    .hero-fire {
+      position: relative;
+      padding: 40px 0 30px;
+    }
+
+    .hero-fire::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: min(900px, 100%);
+      height: 130%;
+      background: url("images/by_meh-fire.jpg") center bottom / cover no-repeat;
+      opacity: 0.6;
+      z-index: 0;
+      pointer-events: none;
+      -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 30%, transparent 100%);
+      mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 30%, transparent 100%);
+    }
+
+    .hero-fire .hero-title {
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.85);
+    }
+        .hero-meta-row {
+      letter-spacing: 0.1em;
+      line-height: 1.8;
+    }
+
+    .nav-inner {
+      flex-wrap: wrap;
+    }
+
+    .nav-title {
+      white-space: nowrap;
+    }
+
+    @media (max-width: 900px) {
+      .nav-title { display: none; }
+    }
+      </style>
+    
+            <!-- DROPDOWN: merged tabular results -->
+            <details class="results-toggle">
+              <summary>View detailed tabular results</summary>
+      
+              <div class="card" style="margin-top: 12px;">
+                <div class="card-subtitle">All Models</div>
+                <div class="card-title">Base vs. +FRM across post-fire tasks</div>
+                <p class="section-body" style="margin-top: 6px;">
+                  Each model is evaluated with its encoder frozen, with and without the feature mapping module (FRM).
+                  &Delta; is the absolute gain in points. For each task, the highlighted row indicates the best
+                  +FRM score across all evaluated models.
+                </p>
+      
+                <div class="table-wrapper" style="margin-top: 10px;">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Model</th>
+                        <th>Base</th>
+                        <th>+FRM</th>
+                        <th>&Delta;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Pristine-state retrieval -->
+                      <tr class="row-group">
+                        <td colspan="4">Task: Pristine-State Retrieval (R@1)</td>
+                      </tr>
+                      <tr>
+                        <td>Qwen3-VL</td>
+                        <td>74.55</td>
+                        <td>85.28</td>
+                        <td class="cell-delta">+10.73</td>
+                      </tr>
+                      <tr>
+                        <td>Qwen2.5-VL</td>
+                        <td>60.20</td>
+                        <td>72.03</td>
+                        <td class="cell-delta">+11.83</td>
+                      </tr>
+                      <tr>
+                        <td>InternVL3.5</td>
+                        <td>59.09</td>
+                        <td>74.92</td>
+                        <td class="cell-delta">+15.83</td>
+                      </tr>
+                      <tr class="row-highlight">
+                        <td>Molmo2</td>
+                        <td>85.06</td>
+                        <td><strong>90.00</strong></td>
+                        <td class="cell-delta">+4.94</td>
+                      </tr>
+                      <tr>
+                        <td>LLaVA-OV-1.5</td>
+                        <td>83.97</td>
+                        <td>86.09</td>
+                        <td class="cell-delta">+2.12</td>
+                      </tr>
+      
+                      <!-- Original material recovery -->
+                      <tr class="row-group">
+                        <td colspan="4">Task: Original Material Recovery (micro-F1)</td>
+                      </tr>
+                      <tr class="row-highlight">
+                        <td>Qwen3-VL</td>
+                        <td>36.00</td>
+                        <td><strong>39.24</strong></td>
+                        <td class="cell-delta">+3.24</td>
+                      </tr>
+                      <tr>
+                        <td>Qwen2.5-VL</td>
+                        <td>30.50</td>
+                        <td>36.78</td>
+                        <td class="cell-delta">+6.28</td>
+                      </tr>
+                      <tr>
+                        <td>InternVL3.5</td>
+                        <td>26.10</td>
+                        <td>35.91</td>
+                        <td class="cell-delta">+9.81</td>
+                      </tr>
+                      <tr>
+                        <td>Molmo2</td>
+                        <td>23.56</td>
+                        <td>27.52</td>
+                        <td class="cell-delta">+3.96</td>
+                      </tr>
+                      <tr>
+                        <td>LLaVA-OV-1.5</td>
+                        <td>22.31</td>
+                        <td>26.89</td>
+                        <td class="cell-delta">+4.58</td>
+                      </tr>
+      
+                      <!-- Pristine description generation -->
+                      <tr class="row-group">
+                        <td colspan="4">Task: Pristine Description Generation (description score)</td>
+                      </tr>
+                      <tr class="row-highlight">
+                        <td>Qwen3-VL</td>
+                        <td>41.67</td>
+                        <td><strong>45.15</strong></td>
+                        <td class="cell-delta">+3.48</td>
+                      </tr>
+                      <tr>
+                        <td>Qwen2.5-VL</td>
+                        <td>40.50</td>
+                        <td>44.00</td>
+                        <td class="cell-delta">+3.50</td>
+                      </tr>
+                      <tr>
+                        <td>InternVL3.5</td>
+                        <td>27.01</td>
+                        <td>35.42</td>
+                        <td class="cell-delta">+8.41</td>
+                      </tr>
+                      <tr>
+                        <td>Molmo2</td>
+                        <td>33.80</td>
+                        <td>38.13</td>
+                        <td class="cell-delta">+4.33</td>
+                      </tr>
+                      <tr>
+                        <td>LLaVA-OV-1.5</td>
+                        <td>35.48</td>
+                        <td>39.34</td>
+                        <td class="cell-delta">+3.86</td>
+                      </tr>
+      
+                      <!-- Functional reasoning -->
+                      <tr class="row-group">
+                        <td colspan="4">Task: Functional Reasoning (mean micro-F1)</td>
+                      </tr>
+                      <tr>
+                        <td>Qwen3-VL</td>
+                        <td>41.02</td>
+                        <td>46.96</td>
+                        <td class="cell-delta">+5.94</td>
+                      </tr>
+                      <tr>
+                        <td>Qwen2.5-VL</td>
+                        <td>38.11</td>
+                        <td>43.62</td>
+                        <td class="cell-delta">+5.51</td>
+                      </tr>
+                      <tr>
+                        <td>InternVL3.5</td>
+                        <td>36.13</td>
+                        <td>40.48</td>
+                        <td class="cell-delta">+4.35</td>
+                      </tr>
+                      <tr class="row-highlight">
+                        <td>Molmo2</td>
+                        <td>42.64</td>
+                        <td><strong>47.95</strong></td>
+                        <td class="cell-delta">+5.31</td>
+                      </tr>
+                      <tr>
+                        <td>LLaVA-OV-1.5</td>
+                        <td>39.76</td>
+                        <td>43.07</td>
+                        <td class="cell-delta">+3.31</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </details>
+      
+            <!-- 2×2 grid of task plots (single square image) -->
+            <div class="figure figure-tor">
+              <img src="images/results.png"
+                   alt="2x2 grid of bar charts comparing base and +FRM performance of Qwen3-VL, Qwen2.5-VL, InternVL3.5, Molmo2, and LLaVA-OV-1.5 on pristine-state retrieval, original material recovery, pristine description generation, and functional reasoning." />
+              <div class="figure-caption">
+                Figure 7: Adding FRM improves all five models on all four tasks while keeping the host
+                model frozen, with average gains of 9.1 R@1 points on retrieval, 5.6 micro-F1 points on material
+                recovery, 4.7 points on description generation, and 4.9 micro-F1 points on functional reasoning.
+              </div>
+            </div>
+      
+            <p class="section-body">
+              Together, these results show that a lightweight, plug-and-play feature mapping consistently
+              recovers object understanding lost to fire damage across model families, without retraining
+              the host model.
+            </p>
+          </section>
+    
+
+<!-- RESOURCES -->
+<section id="resources" class="reveal section-block">
+  <div class="section-header">
+    <h2 class="section-title">Ethics and Bibtex</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-subtitle">Ethics</div>
+    <div class="card-title">Responsible release</div>
+    <p class="section-body" style="margin-top: 6px;">
+      All real-word images have free use lisence and all generated images are in the compliance with the lisense by Gemini 3 Image Pro.
+      TRACE and FRM is released for research on robust, safety-critical multimodal systems and may not be used
+      for surveillance, profiling, or non-consensual monitoring.
+    </p>
+  </div>
+
+  <div class="card">
+    <div class="card-subtitle">Citation</div>
+    <div class="card-title">BibTeX</div>
+    <pre>
+@misc{tiwari2025featurerevoryrobustfiredetection,
+  title         = {Feature Recovery for Object Understanding After Irreversible Fire Damage},
+  author        = {Aditi Tiwari and Sofia Stoica and Savya Khosla and David Forsyth and Heng Ji},
+  year          = {2026},
+  eprint        = {2609.12078},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  url           = {https://arxiv.org/abs/2609.12078},
+}</pre>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>
+    FRM · NeurIPS 2026 Poster &nbsp;·&nbsp; UIUC
+  </div>
+  <div>
+    Contact: <a href="mailto:aditit5@illinois.edu">aditit5@illinois.edu</a> · <a href="mailto:sstoica2@illinois.edu">sstoica2@illinois.edu</a>
+  </div>
+</footer>
+
+  </main>
+
+  <script>
+    // Reveal elements on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
